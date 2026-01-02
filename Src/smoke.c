@@ -98,7 +98,7 @@ int main(){
         return -1;
     }
 
-    Shader shader = shader_create("C:\\Users\\Lenovo\\Desktop\\sim\\fluid_dynamics\\shader\\fluid.vs", "C:\\Users\\Lenovo\\Desktop\\sim\\fluid_dynamics\\shader\\fluid.fs");
+    Shader shader = shader_create("/shader/fluid.vs", "/shader/fluid.fs");
     unsigned int densityTexture;
     glGenTextures(1, &densityTexture);
     glActiveTexture(GL_TEXTURE0);
@@ -350,4 +350,5 @@ void set_bound(int boundary, float* x){
     x[INDEX(0, GRID_RESOLUTION + 1)] = 0.5 * (x[INDEX(1, GRID_RESOLUTION + 1)] + x[INDEX(0, GRID_RESOLUTION)]);
     x[INDEX(GRID_RESOLUTION + 1, 0)] = 0.5 * (x[INDEX(GRID_RESOLUTION, 0)] + x[INDEX(GRID_RESOLUTION + 1, 1)]);
     x[INDEX(GRID_RESOLUTION + 1, GRID_RESOLUTION + 1)] = 0.5 * (x[INDEX(GRID_RESOLUTION, GRID_RESOLUTION + 1)] + x[INDEX(GRID_RESOLUTION + 1, GRID_RESOLUTION)]);
+
 }
