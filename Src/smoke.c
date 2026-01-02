@@ -68,7 +68,7 @@ void processInput(GLFWwindow* window, float dt){
 
         if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS){
         source[INDEX(i, j)] = 10000.0f; //Source strength
-        u_prev[INDEX(i, j)] += 50.0f;
+        //u_prev[INDEX(i, j)] += 50.0f;
         add_source(dens, source, dt);
     }
     }
@@ -352,3 +352,4 @@ void set_bound(int boundary, float* x){
     x[INDEX(GRID_RESOLUTION + 1, GRID_RESOLUTION + 1)] = 0.5 * (x[INDEX(GRID_RESOLUTION, GRID_RESOLUTION + 1)] + x[INDEX(GRID_RESOLUTION + 1, GRID_RESOLUTION)]);
 
 }
+
