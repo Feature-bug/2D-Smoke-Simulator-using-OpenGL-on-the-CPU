@@ -67,8 +67,8 @@ void processInput(GLFWwindow* window, float dt){
         v_prev[INDEX(i, j)] += -dy * 10.0f;
 
         if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS){
-        source[INDEX(i, j)] = 10000.0f; //Source strength
-        //u_prev[INDEX(i, j)] += 50.0f;
+        source[INDEX(i, j)] = 9000.0f; //Source strength
+        v_prev[INDEX(i, j)] = 60.0f;   //Vertical velocity
         add_source(dens, source, dt);
     }
     }
@@ -98,7 +98,7 @@ int main(){
         return -1;
     }
 
-    Shader shader = shader_create("/shader/fluid.vs", "/shader/fluid.fs");
+    Shader shader = shader_create("Src/Shader/fluid.vs", "Src/Shader/fluid.fs");
     unsigned int densityTexture;
     glGenTextures(1, &densityTexture);
     glActiveTexture(GL_TEXTURE0);
@@ -112,13 +112,13 @@ int main(){
     //Initialising framebuffer
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    u = malloc(SIZE * sizeof(float));
-    u_prev = malloc(SIZE * sizeof(float));
-    v = malloc(SIZE * sizeof(float));
-    v_prev = malloc(SIZE * sizeof(float));
-    dens = malloc(SIZE * sizeof(float));
-    dens_prev = malloc(SIZE * sizeof(float));
-    source = malloc(SIZE * sizeof(float));
+    u = calloc(SIZE, sizeof(float));
+    u_prev = calloc(SIZE, sizeof(float));
+    v = calloc(SIZE, sizeof(float));
+    v_prev = calloc(SIZE, sizeof(float));
+    dens = calloc(SIZE, sizeof(float));
+    dens_prev = calloc(SIZE, sizeof(float));
+    source = calloc(SIZE, sizeof(float));
     float quadVertices[] = {
         // positions   // texCoords
         -1.0f,  1.0f,  0.0f, 1.0f,
